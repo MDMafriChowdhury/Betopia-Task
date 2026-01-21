@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pre-load the Letter Types linking to the templates above -->
+    <record id="letter_type_appointment" model="hr.letter.type">
+        <field name="name">Appointment Letter</field>
+        <field name="view_id" ref="employee_letter_wizard.template_appointment_letter"/>
+    </record>
+
+    <record id="letter_type_promotion" model="hr.letter.type">
+        <field name="name">Promotion Letter</field>
+        <field name="view_id" ref="employee_letter_wizard.template_promotion_letter"/>
+    </record>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template 1: Appointment Letter -->
+    <template id="template_appointment_letter">
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <h2 style="text-align: center; text-decoration: underline;">Appointment Letter</h2>
+            <br/>
+            <p><strong>Date:</strong> <span t-esc="today"/></p>
+            <p><strong>To:</strong> <span t-esc="employee.name"/></p>
+            <p><strong>Department:</strong> <span t-esc="employee.department_id.name or '[Department]'"/></p>
+            <br/>
+            <p>Dear <span t-esc="employee.name"/>,</p>
+            <p>We are pleased to offer you the position of <strong><span t-esc="employee.job_id.name or '[Job Position]'"/></strong> at <strong><span t-esc="company.name"/></strong>.</p>
+            
+            <!-- We now use 'joining_date' calculated safely in Python -->
+            <p>Your expected joining date is <strong><span t-esc="joining_date"/></strong>.</p>
+            
+            <p>We look forward to welcoming you to the team.</p>
+            <br/>
+            <br/>
+            <p>Sincerely,</p>
+            <p><strong><span t-esc="company.name"/> HR Team</strong></p>
+        </div>
+    </template>
+
+    <!-- Template 2: Promotion Letter -->
+    <template id="template_promotion_letter">
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <h2 style="text-align: center; text-decoration: underline;">Letter of Promotion</h2>
+            <br/>
+            <p><strong>Date:</strong> <span t-esc="today"/></p>
+            <br/>
+            <p>Dear <span t-esc="employee.name"/>,</p>
+            <p>It is my pleasure to inform you that you have been promoted to the position of <strong><span t-esc="employee.job_id.name or '[Job Position]'"/></strong>, effective immediately.</p>
+            <p>This promotion is a recognition of your hard work and dedication to <strong><span t-esc="company.name"/></strong>.</p>
+            <br/>
+            <p>Congratulations on your new role!</p>
+            <br/>
+            <br/>
+            <p>Best Regards,</p>
+            <p>Management</p>
+        </div>
+    </template>
+</odoo>
