@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. The Report Action -->
+    <record id="action_report_employee_letter" model="ir.actions.report">
+        <field name="name">Employee Letter</field>
+        <field name="model">hr.letter.generator</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">employee_letter_wizard.report_employee_letter_template</field>
+        <field name="report_file">employee_letter_wizard.report_employee_letter_template</field>
+        <field name="binding_model_id" ref="model_hr_letter_generator"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- 2. The Report Template -->
+    <template id="report_employee_letter_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- We simply print the HTML content from the wizard -->
+                        <!-- t-raw is deprecated in newer Odoo, t-out is safer -->
+                        <div t-out="doc.preview_content"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
