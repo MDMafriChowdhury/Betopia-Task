@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_so_migration_tool,so.migration.tool,model_so_migration_tool,base.group_system,1,1,1,1
+access_so_migration_log,so.migration.log,model_so_migration_log,base.group_system,1,1,1,1

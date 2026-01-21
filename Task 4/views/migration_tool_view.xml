@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Config Form View -->
+    <record id="view_so_migration_tool_form" model="ir.ui.view">
+        <field name="name">so.migration.tool.form</field>
+        <field name="model">so.migration.tool</field>
+        <field name="arch" type="xml">
+            <form string="Sales Order Migration">
+                <header>
+                    <button name="action_test_connection" string="Test Connection" type="object" class="btn-secondary"/>
+                    <button name="action_start_migration" string="Start Migration" type="object" class="btn-primary" confirm="Are you sure? This will migrate Confirm/Done orders."/>
+                </header>
+                <sheet>
+                    <group string="Odoo 17 Connection">
+                        <field name="url" placeholder="http://192.168.1.50:8069"/>
+                        <field name="db"/>
+                        <field name="username"/>
+                        <field name="password" password="True"/>
+                    </group>
+                    <notebook>
+                        <page string="Logs">
+                            <field name="log_ids">
+                                <list decoration-success="status=='migrated'" decoration-danger="status=='failed'" decoration-info="status=='skipped'">
+                                    <field name="create_date"/>
+                                    <field name="so_reference"/>
+                                    <field name="status"/>
+                                    <field name="message"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_so_migration_tool" model="ir.actions.act_window">
+        <field name="name">Migration Tool</field>
+        <field name="res_model">so.migration.tool</field>
+        <field name="view_mode">form</field>
+        <!-- FIXED: Changed 'inline' to 'current' -->
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_so_migration_tool" 
+              name="Migration Tool" 
+              parent="sale.sale_menu_root" 
+              action="action_so_migration_tool" 
+              sequence="100"/>
+</odoo>
